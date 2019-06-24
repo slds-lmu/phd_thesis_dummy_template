@@ -1,0 +1,108 @@
+#####################################
+##        LiessMich-Datei          ##
+##                                 ##
+##     fuer die Benutzung der      ##
+## LMU-Vorlage fuer Dissertationen ##
+#####################################
+
+
+#######################
+1) Aufbau des Dokuments 
+
+*	diss.tex	enthaelt allgemeine Angaben zu Format
+			und Stil, die Daten fuer das Titelblatt
+			sowie die Dateinamen der Kapitel und 
+			Anhaenge.
+
+*	zusammenfassung.tex
+			Enthaelt den max. einseitigen Text der
+			Zusammenfassung.
+	
+*	kap_xx.tex	Enthaelt den Inhalt von Kapitel xx.
+			
+*	anhang.tex	Enthaelt den Text der Anhaenge.
+
+*	danksagung.tex	Enthaelt den Text der Danksagung.
+
+*	lebenslauf.tex	Enthaelt den Lebenslauf des Autors.
+
+*	literatur.bib	Diese Datei enthaelt die Eintraege der
+			Literaturdatenbank, aus der mittels
+			Bibtex ein Literaturverzeichnis automatisch
+			erzeugt wird.	
+
+###########################################
+2) Beschreibung der notwendigen Anpassungen
+
+*	diss.tex	Hier sind alle \usepackage Anweisungen
+			und Formataenderungen einzufuegen.
+			
+			Fuer pdflatex ist die Anweisung
+			\usepackage[..]{hyperref}
+			zu verwenden, die es ermoeglicht, Verweisen
+			mit einem Mausklick zu folgen.
+
+			Fuer Standart latex ist diese Anweisung
+			Auszukommentieren.
+			
+			Es sind die Angaben zur Erstellung
+			des Titelblattes entsprechend zu aendern.
+			
+			Fuer jedes Kapitel muss ein Eintrag der Form
+			\include{kap_xx} vorhanden sein. Der Text
+			des Kapitels muss dann in der Datei kap_xx.tex
+			zu finden sein (s.u.)
+
+*	kap_xx.tex	Hier ist der Inhalt von Kapitel xx einzutragen.
+			Fuer jedes Kapitel sollte eine eigene Datei
+			verwendet werden. 
+			ACHTUNG: Jedes neue erstellte Kapitel muss in
+			dis.tex eingefuegt werden (s.o.)
+
+*	literatur.bib   Fuer jeden Literaturverweis muss hier ein
+			Eintrag erzeugt werden. Die Beispiele der
+			Vorlage sind (hoffentlich) selbsterklaerend.
+	
+			Im Text des Dokuments wird via \cite{LABEL}
+			auf den Literatureintrag (z.B.) @Book{LABEL, ...}
+			verwiesen.
+
+			Nicht zitierte Eintraege erscheinen nicht im
+			Literaturverzeichnis.
+
+########################################
+3) Erzeugung des endglueltigen Dokuments
+
+a)	Wer ueber das Make-Utility verfuegt, braucht fuer 
+	die Erzeugung einer PDF- bzw. PostScript-Version lediglich
+	"make diss.pdf" bzw. 
+	"make diss.ps" 
+	(ohne Anfuehrungszeichen) in der Kommandozeile einzugeben.
+	
+	Die Dissertation befindet sich anschliessend in der Datei
+	"diss.pdf" bzw "diss.ps"
+
+	Ein abschliessender Aufruf von 
+	"make clean"
+	entfernt saemtliche erzeugten Zwischendateien.
+
+b)	Von Hand ist die folgende Befehlsfolge zu verwenden:
+	
+	pdflatex diss
+	bibtex   diss
+	pdflatex diss
+	pdflatex diss
+
+	Falls keine Fehler auftreten befindet sich eine PDF-Version
+	der Dissertation in der Datei "diss.pdf".
+
+	(Moechte man eine PostScript-Version, so ist obiger Hinweis
+	zu beachten und statt des Befehls "pdflatex" der Befehl "latex"
+	zu verwenden. Die PS-Version erstellt man durch abschliessendes
+	
+	dvips -o diss.ps diss.dvi
+
+
+##################
+2002 Robert Dahlke
+##################	
