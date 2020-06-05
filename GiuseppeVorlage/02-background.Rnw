@@ -1,0 +1,9 @@
+\Sexpr{set_parent('Casalicchio_Giuseppe.Rnw')}
+
+\chapter{Methodological and General Background}
+\label{chap:background}
+
+<<child="02-background-measures.Rnw">>=
+@
+
+% Add more sections here if needed

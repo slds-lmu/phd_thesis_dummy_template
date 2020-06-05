@@ -1,0 +1,208 @@
+\Sexpr{set_parent('Casalicchio_Giuseppe.Rnw')}
+
+\part{Machine Learning Software in \textsf{R}}
+\label{part:mlr}
+
+\chapter{Multilabel Classification with \textsf{R} Package \textsf{mlr}}
+\label{chap:cont2}
+
+Chapter \ref{chap:cont2} describes several methods for multilabel classification that were also implemented into our \textsf{R} package \textsf{mlr} \citep{Bischl2016}.
+Furthermore, the methods are compared in a benchmark study on several multilabel datasets using different observation-based multilabel performance measures.
+
+\subsubsection*{Contributing article:}
+
+\citationb
+
+\subsubsection*{Copyright information:}
+
+This article is licensed under a \href{https://creativecommons.org/licenses/by/4.0}{Creative Commons Attribution 4.0 International license} (\url{https://creativecommons.org/licenses/by/4.0/}).
+
+\subsubsection*{Author contributions:}
+
+Philipp Probst and Quay Au prepared a first draft of the paper.
+Giuseppe Casalicchio reworked the paper and improved the mathematical notation.
+He also assisted in designing and running the benchmark study, as well as in analyzing and reporting the benchmark results.
+He further extended the benchmark study to accommodate the reviewers' comments.
+Clemens Stachl and Bernd Bischl added valuable input and suggested several notable modifications.
+All authors contributed to revisions of the paper.
+
+\subsubsection*{Supplementary material available at:}
+
+\begin{itemize}
+\item Supplementary material: \url{https://doi.org/10.6084/m9.figshare.3384802.v5}
+\item Tutorial: \url{https://mlr.mlr-org.com/articles/tutorial/multilabel.html}
+\item The \textsf{mlr} package:
+\begin{itemize}
+\item Paper: \url{http://jmlr.org/papers/v17/15-066.html}
+\item \textsf{R} package: \url{https://github.com/mlr-org/mlr}
+\end{itemize}
+\end{itemize}
+
+
+
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\iffalse")
+@
+\newpage
+\includepdf[pages={1-last}, pagecommand={\pagestyle{fancyplain}}, width=0.98\textwidth, clip, trim=14mm 8mm 14mm 8mm, offset=0 -6mm]{contribution2-multilabel.pdf}
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\fi")
+@
+
+
+\part{On Benchmark Experiments with OpenML}
+\label{part:bench}
+
+\chapter{\textsf{OpenML}: An \textsf{R} Package to Connect to the Machine Learning Platform OpenML}
+\label{chap:cont3}
+
+Chapter \ref{chap:cont3} introduces the \textsf{R} package \textsf{OpenML}, which provides a simple interface for communicating with the OpenML server directly from within \textsf{R} and allows users to easily search, download, and upload datasets and benchmark results.
+
+\subsubsection*{Contributing article:}
+
+\citationc
+
+\subsubsection*{Copyright information:}
+
+Springer-Verlag GmbH Germany, 2017.
+
+\subsubsection*{Author contributions:}
+
+Giuseppe Casalicchio prepared a first draft of the whole paper.
+Section 1 and 2 were mainly drafted by Joaquin Vanschoren.
+Bernd Bischl, Dominik Kirchhoff and Michel Lang designed and prepared a first draft of the package with some basic functionalities.
+Giuseppe Casalicchio took over the package development and reworked most parts of the package.
+He further continuously extended, tested and adapted the package due to the further ongoing development of the OpenML project.
+All authors added valuable input, proofread and contributed to revisions of the paper.
+
+\subsubsection*{Supplementary material available at:}
+
+\begin{itemize}
+\item \textsf{R} package: \url{https://github.com/openml/openml-r}
+\item Tutorial: \url{http://openml.github.io/openml-r}
+\end{itemize}
+
+
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\iffalse")
+@
+\newpage
+\includepdf[pages={1-last}, pagecommand={\pagestyle{fancyplain}}, height=1\textheight, clip, trim=15mm 10mm 15mm 5mm, offset=0 0]{contribution3-openml.pdf}
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\fi")
+@
+
+
+\chapter{OpenML Benchmarking Suites}
+\label{chap:cont4}
+
+Chapter \ref{chap:cont4} promotes the use of benchmarking suites (i.e., a carefully selected collection of easily accessible datasets).
+The chapter also describes how researchers can create their own benchmarking suites on OpenML, and it presents a first such collection for classification datasets, namely the \textit{OpenML100} benchmarking suite.
+
+\subsubsection*{Contributing article:}
+
+\citationd
+
+\subsubsection*{Author contributions:}
+
+The paper was jointly written and reworked by all authors.
+All authors contributed to the extensive task of selecting, documenting, and curating appropriate classification datasets from OpenML.
+Jan van Rijn and Joaquin Vanschoren were responsible for extending the REST API, and they also implemented an interface to the OpenML server for creating benchmarking suites.
+Matthias Feurer and Jan van Rijn were responsible for extending and adapting the \textsf{Python} interface.
+Giuseppe Casalicchio was responsible for extending and adapting the \textsf{R} interface.
+All authors added valuable input and proofread the paper in several stages.
+
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\iffalse")
+@
+\newpage
+\includepdf[pages={1-last}, pagecommand={\pagestyle{fancyplain}}, height=1\textheight, clip, trim=30mm 20mm 30mm 10mm, offset=0 0]{contribution4-benchmark-suite.pdf}
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\fi")
+@
+
+
+\part{Evaluation and Interpretation of Machine Learning Models}
+\label{part:iml}
+
+
+\chapter{The Residual-Based Predictiveness Curve}
+\label{chap:cont5}
+
+The predictiveness curve \citep{Huang2007} is a visualization method to assess the performance of binary classifiers that predict probabilities.
+Regarding the assessment of such probabilistic classifiers, two essential criteria must be considered, namely the discrimination performance and the calibration of the predicted probabilities.
+The ROC curve is known to consider only the discrimination performance and not the calibration of the predicted probabilities.
+Therefore, the use of the predictiveness curve is a reasonable alternative, since it also accounts for the calibration of the predicted probabilities \citep[cf.][]{Pepe2008b}.
+Chapter \ref{chap:cont5} reviews the role of the predictiveness curve in the performance assessment and discusses several shortcomings of the curve.
+Furthermore, the RBP curve is proposed as an extension that addresses several shortcomings of the original predictiveness curve.
+This chapter also shows how the RBP curve can be used to derive several discrimination and calibration measures.
+
+\subsubsection*{Contributing article:}
+
+\citatione
+
+\subsubsection*{Copyright information:}
+
+%John Wiley & Sons, Inc. 2017.
+The International Biometric Society, 2015.
+
+\subsubsection*{Author contributions:}
+
+The whole paper was drafted and, in most parts, written by Giuseppe Casalicchio.
+Matthias Schmid revised the paper in several stages and contributed to all sections.
+Bernd Bischl helped with setting up the simulation and designing the accompanying \textsf{R} package.
+Anne-Laure Boulesteix contributed to the real data application in Section 5.
+All authors added valuable input, proofread and revised the paper.
+
+\subsubsection*{Supplementary material available at:}
+
+\begin{itemize}
+\item \textsf{R} package: \url{https://cran.r-project.org/web/packages/RBPcurve}
+\item Supplementary material: \newline \url{https://onlinelibrary.wiley.com/doi/abs/10.1111/biom.12455}
+\end{itemize}
+
+
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\iffalse")
+@
+\newpage
+\includepdf[pages={1-last}, pagecommand={\pagestyle{fancyplain}}, width=1\textwidth, clip, trim=15mm 10mm 15mm 10mm, offset=0 0]{contribution5-rbp-curve.pdf}
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\fi")
+@
+
+
+
+\chapter{Visualizing the Feature Importance for Black Box Models}
+\label{chap:cont6}
+
+Chapter \ref{chap:cont6} first provides an overview of common model-agnostic interpretability methods in machine learning.
+Furthermore, it introduces a local feature importance measure from which two novel visual tools are derived, namely the partial importance (PI) and individual conditional importance (ICI) plots.
+The visual tools visualize how changes in a feature affect the model performance on average, as well as for individual observations.
+Moreover, another feature importance measure called the Shapley feature importance (SFIMP) measure is introduced, which can be used to compare the feature importance across different models, since it fairly distributes the overall performance of a model among the features.
+
+\subsubsection*{Contributing article:}
+
+\citationf
+
+\subsubsection*{Copyright information:}
+
+\subsubsection*{Author contributions:}
+
+The whole paper and the accompanying \textsf{R} package were written by Giuseppe Casalicchio.
+Christoph Molnar and Bernd Bischl added valuable input and suggested several notable modifications.
+All authors proofread and revised the paper.
+
+\subsubsection*{Supplementary material available at:}
+
+\textsf{R} package: \url{https://github.com/giuseppec/featureImportance}
+
+
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\iffalse")
+@
+\newpage
+\includepdf[pages={1-last}, pagecommand={\pagestyle{fancyplain}}, height=1\textheight, clip, trim=46mm 60mm 38mm 30mm, offset=0 0]{contribution6-feature-importance.pdf}
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\fi")
+@

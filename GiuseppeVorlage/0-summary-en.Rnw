@@ -1,0 +1,8 @@
+\Sexpr{set_parent('Casalicchio_Giuseppe.Rnw')}
+
+\thispagestyle{empty}
+\section*{Summary}
+
+Summary
+
+\cleardoublepage

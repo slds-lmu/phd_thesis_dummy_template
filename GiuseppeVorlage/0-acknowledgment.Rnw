@@ -1,0 +1,24 @@
+\Sexpr{set_parent('Casalicchio_Giuseppe.Rnw')}
+
+\thispagestyle{empty}
+\section*{Acknowledgments}
+\textit{This thesis would not have been possible without the help, support, guidance, and advice of many people!
+In particular, I would like to express my sincere gratitude to} $\dots$
+
+\begin{itemize}
+\item[$\dots$] \textit{my supervisor Prof. Dr. Bernd Bischl for the seamless collaboration, trust, support, encouragement and many advice throughout the years.}
+\item[$\dots$] \textit{Prof. Dr. Friedrich Leisch and PD Dr. Fabian Scheipl for their willingness to act as the second and third reviewer for my Ph.D. thesis.}
+\item[$\dots$] \textit{Prof. Dr. Christian Heumann and Prof. Dr. Helmut Küchenhoff for their availability to be part of the examination panel at my Ph.D. defense.}
+\item[$\dots$] \textit{Prof. Dr. Matthias Schmidt for the excellent supervision and guidance in my first research project.}
+\item[$\dots$] \textit{Prof. Dr. Helmut Küchenhoff for the financial support during my work at the StabLab, which gave me the opportunity to work on many interesting consulting projects.}
+\item[$\dots$] \textit{the Centre Digitisation.Bavaria (ZD.B) and the LMUexcellent program for financial support during my work on these projects.}
+\item[$\dots$] \textit{Prof. Dr. Joaquin Vanschoren and Jan van Rijn for pushing forward the OpenML project and organizing many delightful workshops and hackathons with lots of free lunches.}
+\item[$\dots$] \textit{all my coauthors for the fruitful collaborations.}
+\item[$\dots$] \textit{all members of my working group: Thank you for the great collaboration, inspiring discussions and unforgettable time at different workshops and conferences!}
+\item[$\dots$] \textit{all current and former office colleagues: Thank you Lisa Möst, Janek Thomas, Xudong Sun, Daniel Schalk, Stefan Coors for withstanding all my noises and monologues in the office.}
+\item[$\dots$] \textit{all remaining former and current colleagues at the Department of Statistics for the excellent general atmosphere.}
+\item[$\dots$] \textit{my parents and the best girlfriend who always support me, understand me (most of the time) and are always there for me.}
+\end{itemize}
+\newpage
+
+\cleardoublepage

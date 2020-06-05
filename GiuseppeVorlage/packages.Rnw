@@ -1,0 +1,202 @@
+%\KOMAoptions{BCOR=0mm} % DIV=15,BCOR=12mm
+
+% Farben
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<<echo=FALSE, message = FALSE>>=
+library(ggplot2)
+library(ggpubr)
+knit_hooks$set(document = function(x) {sub('\\usepackage[]{color}', '\\usepackage{xcolor}', x, fixed = TRUE)})
+@
+%\usepackage[usenames]{color} %  \textcolor{blue}{blau}
+%\usepackage{xcolor}
+
+% Zeichen/Sprache
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[german, english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{lmodern} % avoid warning regarding font sizes, see https://tex.stackexchange.com/questions/58087/how-to-remove-the-warnings-font-shape-ot1-cmss-m-n-in-size-4-not-available
+\usepackage{xspace} % needed for shortcut https://tex.stackexchange.com/questions/7793/defining-shortcuts
+%\usepackage{autonum} % show numbers for formula only when they are refered to https://tex.stackexchange.com/questions/4728/how-do-i-number-equations-only-if-they-are-referred-to-in-the-text
+% Font
+% \usepackage[scale=0.9]{tgheros}%% TeX Gyre Sans Serif
+% \usepackage{tgtermes}%%           TeX Gyre Times
+% \renewcommand{\sfdefault}{qhv} % Bera sans
+
+% Environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{todonotes}
+\usepackage{verbatim} % l?ngere Kommentare mit \begin{comment} ... \end{comment}
+
+% Tabellen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multicol,multirow}
+\usepackage{hhline} % Linien in Tabellen, die kompatibel mit dem Einf?rben der Zellen sind
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \usepackage{tabularx}
+% \usepackage{booktabs}
+% \usepackage{colortbl}                  % F?rben von Zellen in Tabellen
+% \usepackage{hhline}
+
+% Graphiken
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{float}
+\usepackage[section]{placeins}
+% \usepackage{grffile} % ermoglicht punkte/ andere zeichen in dateinamen
+% \usepackage{graphicx}
+% \usepackage{rotating}
+% \usepackage{array}
+% %\usepackage{graphpap}
+% \usepackage[small, normal]{caption}
+% % muss vor subfig stehen, da sonst folgender Fehler auftritt: LaTeX Error: Option clash for package caption
+% \usepackage[labelformat=simple, position=top]{subfig}
+% \renewcommand{\thesubfigure}{\relax}
+
+% Format
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[inner=26mm,outer=21mm,top=28mm,bottom=30mm,includehead]{geometry}
+%\usepackage{a4wide} % a4
+%\usepackage[inner=26mm,outer=21mm,top=28mm,bottom=36mm,includehead]{geometry}
+%\usepackage{setspace}
+%\usepackage{lipsum}
+%\usepackage{layouts}
+
+% Mathematische Symbole
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath} % mathematische Symbole
+\usepackage{amssymb} % \mathfrak{}, \mathbb{R}
+\usepackage{amsfonts} % mathematische Symbole => $$ \mathbf{B}, \mathrm{B}, \mathcal{B}, \mathsf{B},
+\usepackage{amsthm}
+\usepackage{dsfont} % Mathematische Schrifstile - Reele zahlen, complexe Zahlen etc => \mathds{C}
+\usepackage{bm} % bold math, allows you to write bold greek letters (both upper and lower case) within
+%\usepackage{wasysym} % \ocircle
+%\usepackage{eurosym} % => \euro{} zur Darstellung des Euro-Symbols, \EUR{...}
+%\usepackage{stmaryrd}
+%\usepackage{latexsym}
+
+% Links
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{url} % => \url{}
+\usepackage[hypertexnames=false, pdfborder={0 0 0}]{hyperref} % Hyperlinks
+%\usepackage[hypertexnames=false, bookmarks, linkbordercolor=white, citebordercolor=white, urlbordercolor=white]{hyperref}
+% hypertexnames=false bewirkt, dass intern Sections, equations und tables mit 1,2,3,4 ... durchnummeriert werden, verhindert Fehlermeldung: latex destination with the same identifier name equation
+% LMU Vorgabe, siehe https://edoc.ub.uni-muenchen.de/help/index.html#property_latex
+\hypersetup{
+pdfpagemode = {UseNone},
+pdftitle = {On Benchmark Experiments and Visualization Methods for the Evaluation and Interpretation of Machine Learning Models},
+pdfauthor = {Giuseppe Casalicchio}
+}
+
+% Unbekannt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{ifthen}
+% \usepackage{picins}
+% \usepackage{bbold}
+% \usepackage{fancybox}
+\usepackage[inline, shortlabels]{enumitem}
+% %\usepackage{float}
+% \usepackage{paralist}
+% \usepackage{footmisc}
+% \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% Literatur
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{pifont} %  Pfeil bei Referenzen
+\usepackage[round]{natbib} % => \bibliographystyle{ } und \bibliography{ }
+\bibliographystyle{chicago} % apalike
+%\usepackage{bibentry}
+%\usepackage{chapterbib} % to include multiple bib files
+%\usepackage[resetlabels,labeled]{multibib}
+%\newcites{New}{The other list}
+
+% Table of Contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Avoid bad box in TOC due to page number with three digits (i.e., page numbers > 99)
+% https://tex.stackexchange.com/questions/49887/overfull-hbox-warning-for-toc-entries-when-using-memoir-documentclass
+\makeatletter
+\renewcommand{\@pnumwidth}{2em}
+\renewcommand{\@tocrmarg}{3em}
+\makeatother
+
+%\usepackage{titletoc}
+%\titlecontents{part}[0pt]{\vspace{15pt}\large\bfseries}{\contentslabel{1.8em}}{\hspace*{0em}}{\hfill\contentspage}[\smallskip]
+%\titlecontents{section}[3.6em]{}{\contentslabel{1.8em}}{\hspace*{0em}}{\titlerule*[1pc]{.}\contentspage}
+%\titlecontents{subsection}[4.65em]{}{\contentslabel{2.85em}}{\hspace*{0em}}{\titlerule*[1pc]{.}\contentspage}
+%\titlecontents{subsubsection}[8.35em]{}{\contentslabel{3.75em}}{\hspace*{0em}}{\titlerule*[1pc]{.}\contentspage}
+
+%\usepackage{chngcntr}
+%\counterwithin*{chapter}{part}
+% \titlecontents{part}[0pt]{\normalsize\bfseries\protect\addvspace{15pt}}%
+% {\contentslabel{1.8em}}{\partname{ }}%
+% {\hfill \contentspage}%
+
+% \makeatletter
+% \renewcommand*{\l@part}[2]{%
+% \par\addvspace{\topsep}
+% \setlength\@tempdima{2.3em}%
+% \noindent\hspace*{1.5em}\textbf{#1}\par}
+% \makeatother
+
+% Header Definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% header giuseppe
+% \usepackage[automark,headsepline]{scrlayer-scrpage}
+% \pagestyle{scrheadings}
+% \lehead[]{\pagemark}
+% \rehead[]{\leftmark}
+% \lohead[]{\leftmark}
+% \rohead[]{\pagemark}
+% \lefoot[]{}\refoot[]{}\lofoot[]{}\rofoot[]{}
+\usepackage{silence} % Verhindert warning fancyhdr + KOMA Klasse
+\WarningFilter{scrbook}{Usage of package `fancyhdr'}
+
+% add pagenumber to chapter pages
+% \WarningFilter{scrbook}{Usage of package `titlesec'}
+% \usepackage{titlesec}
+% \assignpagestyle{\chapter}{fancyplain}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]
+{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]
+{\markright{\thesection\ #1}}
+
+% header felix
+%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+%\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+
+% header stephi
+\newcommand{\helv}{
+\fontfamily{phv}\fontseries{b}\fontsize{10}{10}\selectfont
+}
+%{\fontsize{Fontgr??e}{Grundlinienabstand}\selectfont}
+\lhead[\fancyplain{}{}]{\fancyplain{}{\helv\rightmark}}
+\rhead[\fancyplain{}{\helv\leftmark}]{\fancyplain{}{}}
+%\lhead[\fancyplain{}{\helv\thepage}]{\fancyplain{}{\helv\rightmark}}
+%\rhead[\fancyplain{}{\helv\leftmark}]{\fancyplain{}{\helv\thepage}}
+%\lhead[\fancyplain{}{\helv\rightmark}]{\fancyplain{}{\helv\thepage}}
+%\rhead[\fancyplain{}{\helv\thepage}]{\fancyplain{}{\helv\leftmark}}
+\renewcommand*{\partpagestyle}{empty}
+\lfoot[\helv\thepage]{}
+\rfoot[]{\helv\thepage}
+\cfoot{}
+
+% Optionen / Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\topmargin}{0mm}
+\sloppy
+
+% Hurenkinder und Schusterjungen verhindern
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+% Verhindere warning wegen Einbinden neuerer PDF versionen (siehe https://tex.stackexchange.com/questions/270218/includegraphicspdf-image-is-dropping-items-comments-from-the-pdf-image)
+%\pdfminorversion = 7
+
+% LatexMath definitions
+\input{ml-importance.tex}

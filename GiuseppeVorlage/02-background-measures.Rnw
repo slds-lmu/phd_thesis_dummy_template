@@ -1,0 +1,161 @@
+\Sexpr{set_parent('Casalicchio_Giuseppe.Rnw')}
+
+\section{Performance Measures}
+\label{sec:perfmeasures}
+
+Blabla
+
+\subsection{Measures for Regression}
+
+Blabla
+
+\subsection{Measures for Binary Classification}
+\label{sec:binclass}
+
+Blabla with nice picture
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/classifier-predictions_large.pdf}
+\caption{Illustration of how different types of predictions can be converted into another type. The topics of recalibrating, calibrating, and thresholding are also referred to in the corresponding paragraphs below.}\label{fig:classifpred}
+\end{figure}
+
+\subsubsection*{Discrete Classifiers}
+
+Blabla with nice table
+
+\begin{table}[!htb]
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l|c|c|c|c}
+\multicolumn{2}{c}{} & \multicolumn{2}{c}{Ground Truth} & \\
+\cline{3-4}
+\multicolumn{2}{c|}{} & Positive & Negative & \\
+\multicolumn{2}{c|}{} & $Y = 1$ & $Y = 0$ & \\
+\cline{2-4}
+\parbox[t]{4mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Prediction}}}
+%& & & & \\
+& Positive & \multirow{2}{*}{$TP$} & \multirow{2}{*}{$FP$} & \\
+& $\hh(X) = 1$ & & & \\
+\cline{2-4}
+%& & & & \\
+& Negative & \multirow{2}{*}{$FN$} & \multirow{2}{*}{$TN$} & \\
+& $\hh(X) = 0$ & & & \\
+\cline{2-4}
+\multicolumn{1}{c}{} & \multicolumn{1}{c|}{Total} & \multicolumn{1}{c|}{$TP + FN$} & \multicolumn{1}{c|}{$FP + TN$} & \\
+\end{tabular}
+\end{center}
+\caption{An illustration of a $2 \times 2$ confusion matrix.
+$TN$ and $TP$ refer to the number of predicted classes that were correctly classified as the negative and positive class, respectively.
+$FN$ and $FP$ refer to the positive and negative classes of the ground truth that were wrongly classified as the negative and positive class, respectively.}\label{tab:confusion}
+\end{table}
+
+\subsubsection*{Scoring Classifiers}
+
+Scoring classifiers predict scores that usually range from $-\infty$ to $\infty$, i.e., $\fh(\xi[]) \in \mathds{R}$.
+In particular, different scoring classifiers may predict scores that are on a completely different scale.
+Consequently, it is often only the order of the scores that is relevant when comparing different scoring classifiers.
+Therefore, the scale and magnitude of the scores can often be neglected.
+The easiest way to compare and assess the performance of scoring classifiers is to transform them into discrete classifiers (see Figure \ref{fig:classifpred}).
+This allows the use of previously described discrimination measures, which are based on the confusion matrix.
+For this purpose, a threshold $\theta$ is usually used to separate the scores into discrete classes.
+The resulting discrete classifier for a given threshold $\theta$ is then
+\begin{equation}
+\label{eq:scoring}
+\hh(\xi[], \theta) = \begin{cases}
+1 & \text{if } \fh(\xi[]) > \theta \\
+0 & \text{if } \fh(\xi[]) \leq \theta
+\end{cases}.
+\end{equation}
+However, any value within the range of the predicted scores can act as a threshold, and different thresholds might result in an entirely different confusion matrix.
+Therefore, it is not trivial how to assess the performance in such situations and how to select an appropriate threshold beforehand.
+The most common way is to select the threshold value either manually (e.g., a pre-specified threshold value of interest) or based on optimizing specific criteria \citep[cf.][]{fluss2005estimation, perkins2006inconsistency}.
+
+The ROC curve has proven to be useful for assessing the performance of a scoring classifier because it visualizes the resulting $TPR(\theta)$ and $FPR(\theta)$ for each possible threshold $\theta$.
+Thus, it implicitly considers the order of the scores imposed by the scoring classifier \citep[cf.][]{hernandez2012unified}.
+Specifically, the $TPR$ and $FPR$ at a given threshold value $\theta$ are defined respectively as
+$$TPR(\theta) = \P (\fh(X) > \theta | Y=1) \quad\text{and}\quad FPR(\theta) = \P (\fh(X) > \theta | Y=0).$$
+The pairs $(\widehat{FPR}(\theta), \widehat{TPR}(\theta))$ are computed using Equation \eqref{eq:tprfpr} based on different threshold values $\theta$ and by using $\hh(\xi[], \theta)$ from Equation \eqref{eq:scoring}.
+The points can then be visualized in the ROC space, yielding an estimate of the ROC curve when connecting these points.
+
+<<echo=FALSE, results='hide'>>=
+set.seed(123)
+fun = ecdf(rexp(1000000, rate = 5))
+x = seq(0, 1, length = 1000)
+d = data.frame(x = x, y = fun(x))
+@
+A natural performance measure that can be derived from the ROC curve is the area under the curve ($AUC$), which according to \citet{pencina2008evaluating} can be defined as
+$$AUC = \int_0^1 TPR(\theta) \; \frac{\text{ d}}{\text{ d}\theta} \; FPR(\theta) \text{ d}\theta.$$
+Obviously, the $AUC$ integrates over all possible thresholds $\theta$ across the whole range of scores.
+For illustration purposes, Figure \ref{fig:roc}, panel (b) displays an optimal ROC curve with $AUC = 1$ and a ROC curve with an $AUC = \Sexpr{round(mean(d$y), 2)}$.
+The dashed identity line refers to the ROC curve of a random guessing classifier and is used as the baseline.
+Since the area of the baseline is equal to $0.5$, the estimated $AUC$ of a random guessing classifier will also be close to $0.5$.
+
+<<echo=FALSE, fig.pos="!htb", warning=FALSE, fig.height=3.5, fig.width=8, fig.cap="\\label{fig:roc}Panel (a) displays the best possible discrete classifier in the ROC space and two random guessing classifiers lying on the baseline, namely one that always predicts class 1 and one that never predicts class 1. Panel (b) displays the optimal ROC curve (with $AUC = 1$), a ROC curve with $AUC = 0.8$, and the ROC curve of a random guessing classifier (with $AUC = 0.5$).", fig.pos="ht", fig.align="center", out.width="\\textwidth">>=
+gg_color_hue = function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+palette(gg_color_hue(4))
+library(gridExtra)
+rd = data.frame(x = c(0, 1), y = c(0, 1))
+classif = data.frame(x = c(0, 1, 1, 0), y = c(1, 0, 1, 0),
+  classifier = c("best", "worst", "random", "random"))
+classif = droplevels(classif[-2, ])
+
+p = ggplot(rd, aes(x = x, y = y)) +
+  # geom_area(mapping = aes(x = x, y = y), fill = "red", alpha = 0.5) +
+  coord_fixed(ratio = 1) +
+  ylab(expression(widehat(TPR))) + xlab(expression(widehat(FPR))) +
+  theme_classic2() +
+  theme(
+    panel.grid.major = element_line(colour = "grey90"),
+    panel.grid.minor = element_line(colour = "grey90"),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 10),
+    #legend.margin = element_text(margin = margin(0,0,0,0)),
+    #legend.key.size = unit(1, "lines"),
+    #legend.position = "bottom",
+    legend.box.spacing = unit(0, "lines"),
+    axis.text.y = element_text(angle = 90, hjust = 0.5),
+    plot.title = element_text(margin = margin(0,0,5,0), hjust = 0.5, size = 12)
+    )
+
+p1 = p +
+  geom_line(colour = "grey50", lty = 2) +
+  geom_text(aes(x = 0.5, y = 0.5, hjust = 0.5, vjust = -0.5, label = "baseline"), colour = "grey50", size = 3, angle = 45) +
+  geom_point(data = classif, aes(x = x, y = y, colour = classifier), size = 3) +
+  geom_text(data = classif[classif$classifier == "random",],
+    aes(x = x, y = y, hjust = c(1.1, -0.1), vjust = c(0.5, 0.5)),
+    label = c("always predict class 1", "never predict class 1"),
+    colour = "grey50", size = 3) + ggtitle("(a)") +
+    scale_color_manual("classifier",
+     values = c("best" = 1, "random" = "gray50"))
+
+d2 = rbind(
+  cbind(d, AUC = round(mean(d$y), 2)),
+  cbind(classif[c(3, 1, 2), 1:2], AUC = 1),
+  cbind(rd, AUC = 0.5)
+  )
+d2$AUC = factor(d2$AUC, levels = c("1", "0.8", "0.5"))
+p2 = p +
+  geom_text(aes(x = 0.5, y = 0.5, hjust = 0.5, vjust = -0.5, label = "baseline"), colour = "grey50", size = 3, angle = 45) +
+  geom_line(data = d2, aes(x = x, y = y, lty = AUC, col = AUC)) + ggtitle("(b)") +
+  #scale_colour_manual(values = c("red","green","blue")) +
+  #geom_area(data = d2, aes(x = x, y = y), fill = "gray50", alpha = 0.2) +
+  geom_line(data = d2, aes(x = x, y = y, lty = AUC, col = AUC)) +
+  ylim(c(0, 1)) +
+  scale_linetype_manual("AUC",
+     values = c("1" = 4, "0.8" = 1, "0.5" = 2),
+     labels = paste0(c(1, 0.8, 0.5))) +
+    scale_color_manual("AUC",
+     values = c("1" = 1, "0.8" = 3, "0.5" = "gray50"),
+     labels = paste0(c(1, 0.8, 0.5))) +
+  NULL
+
+#ggarrange(p1, p2, nrow = 1, ncol = 2)
+
+# devtools::install_github("thomasp85/patchwork")
+library(patchwork)
+p1 + plot_spacer() + p2 + plot_layout(nrow = 1, widths = c(1, 0.1, 1)) & theme(plot.margin = grid::unit(c(0, 0, 0, 0), "mm"))
+@

@@ -1,0 +1,29 @@
+\Sexpr{set_parent('Casalicchio_Giuseppe.Rnw')}
+
+\chapter{Introduction}
+
+\section{Outline}
+% What is the thesis about
+This thesis focuses on the development of tools and methods that facilitate the application, comparison, as well as evaluation and interpretation of supervised machine learning methods.
+
+% Explain chapter 1
+The next section gives an overview of all contributing articles and describes their respective goals on a general level.
+Furthermore, the section presents the motivation of the contributing articles, and it establishes a connection between the articles from a general perspective.
+
+% Explain chapter 2
+Chapter \ref{chap:background} introduces some basic concepts that help with understanding the broader context of this thesis, and it outlines previous and related work.
+The contents of the chapter should be understood as a guideline for the reader regarding the main topics of this thesis.
+In particular, this chapter also points out how the individual contributions of this thesis fit within the context of the topics.
+It should be noted that the notation used in Chapter \ref{chap:background} has been unified and therefore does not always match the notation used in the contributing articles embedded in Chapters \ref{chap:cont2} to \ref{chap:cont6}.
+However, the analogies in the notation should be clear from the context.
+
+% Explain part I - IV
+The rest of this thesis is organized into three main parts (i.e., Part \ref{part:mlr} - \ref{part:iml}).
+The contributing articles of this thesis are embedded within these parts as chapters (i.e., Chapter \ref{chap:cont2} - \ref{chap:cont6}).
+At the beginning of each of these chapters, the full reference to the original publication is given, including a description of the author's specific contributions.
+If applicable, other information such as supplementary materials, accompanying software, and copyright information of the articles are also included.
+The thesis concludes with Part \ref{part:conclusion} by emphasizing possible future and ongoing work.
+
+\section{Motivation and Scope}
+
+Motivate your thesis and describe its scope

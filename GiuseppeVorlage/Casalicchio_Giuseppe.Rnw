@@ -1,0 +1,213 @@
+\documentclass[bibliography=totoc,11pt,BCOR=12mm,DIV=14,twoside,parskip=half,paper=A4,pagesize=auto]{scrbook} % hidelinks
+% Testdruck Seiten: 28,35,44,54,68,76,83,113-116
+% Testdruck Acrobat Reader: 16,23,32,42,56,64,71,101,102,103,104
+%\let\mathds\mathbb
+
+<<echo = FALSE, results='hide'>>=
+# setting this to TRUE removes the contribution in the PDF
+remove.contributions = FALSE
+@
+
+<<child = "packages.Rnw">>=
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Deckblatt + Titelseite
+\newcommand{\Title}[9]{
+  % outer title
+  \frontmatter %\AddToShipoutPicture*{\Front}
+  \thispagestyle{empty}
+  \begin{flushleft}
+
+    \sffamily
+    \Large #2 \\
+    \vspace{2.1cm}
+    \huge \textbf{#1}\\ \vspace{.8cm}
+    \normalsize Dissertation an der Fakult\"at f\"ur #3 \\
+    der Ludwig-Maximilians-Universit\"at M\"unchen \\ \vspace{.3cm}
+    Eingereicht am #4
+
+  \end{flushleft}
+  \cleardoublepage
+
+  \pagenumbering{roman}
+  % inner title
+  \thispagestyle{empty}
+  \begin{flushleft}
+
+    \sffamily
+    \Large #2 \\ \vspace{2.1cm}
+    \huge \textbf{#1}\\ \vfill
+    \large Dissertation an der Fakult\"at f\"ur #3 \\
+    der Ludwig-Maximilians-Universit\"at M\"unchen
+    \\ [11.5mm]
+    Eingereicht am #4
+    % alternativ (berichterstatter auf vorderseite)
+    %\\ [5mm]
+    %Eingereicht am #4 \\ [5mm]
+    %Erster Berichterstatter:  #5 \\
+    %Zweiter Berichterstatter: #6 \\ [5mm]
+    %Tag der Disputation: #7
+
+  \end{flushleft}
+
+  \newpage
+  \thispagestyle{empty}
+  \begin{flushleft}
+
+    \vspace*{\stretch{1}}
+    \sffamily \large
+    Erster Berichterstatter:  #5 \\
+    Zweiter Berichterstatter: #6 \\
+    Dritter Berichterstatter:  #7 \\ [11.5mm]
+    Tag der Disputation: #8
+
+  \end{flushleft}
+  \newpage
+}
+\newcommand{\deadline}{07.01.2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contributions
+%\newcommand{\conta}{Chapter \ref{chap:cont1}\xspace}%: \textsf{mlr}: Machine learning in \textsf{R}}
+\newcommand{\contb}{Chapter \ref{chap:cont2}\xspace}%: Multilabel Classification with \textsf{R} Package \textsf{mlr}}
+\newcommand{\contc}{Chapter \ref{chap:cont3}\xspace}%: \textsf{OpenML}: An \textsf{R} package to connect to the machine learning platform}
+\newcommand{\contd}{Chapter \ref{chap:cont4}\xspace}%: OpenML Benchmarking Suites and the OpenML100}
+\newcommand{\conte}{Chapter \ref{chap:cont5}\xspace}%: The Residual-Based Predictiveness Curve}
+\newcommand{\contf}{Chapter \ref{chap:cont6}\xspace}%: Visualizing the Feature Importance for Black Box Models}
+
+\newcommand{\citationb}{
+Probst, P., Au, Q., Casalicchio, G., Stachl, C., and Bischl, B. (2017).
+\newblock {Multilabel Classification with R Package mlr}.
+\newblock {\em R Journal}, 9(1).
+\newblock {\em \url{https://journal.r-project.org/archive/2017/RJ-2017-012/index.html}\/}.
+}
+\newcommand{\citationc}{
+Casalicchio, G., Bossek, J., Lang, M., Kirchhoff, D., Kerschke, P., Hofner, B.,
+  Seibold, H., Vanschoren, J., and Bischl, B. (2017).
+\newblock {OpenML: An R Package to Connect to the Machine Learning Platform OpenML}.
+\newblock {\em Computational Statistics}, pages 1--15.
+\newblock {\em \url{https://doi.org/10.1007/s00180-017-0742-2}\/}.
+}
+\newcommand{\citationd}{
+Bischl, B., Casalicchio, G., Feurer, M., Hutter, F., Lang, M., Mantovani,
+  R.~G., van Rijn, J.~N., and Vanschoren, J. (2017).
+\newblock {OpenML Benchmarking Suites and the OpenML100}.
+\newblock {\em arXiv preprint arXiv:1708.03731}.
+\newblock {\em \url{https://arxiv.org/abs/1708.03731}\/}.
+\newblock In Preparation.
+}
+\newcommand{\citatione}{
+Casalicchio, G., Bischl, B., Boulesteix, A.-L., and Schmid, M. (2016).
+\newblock {The Residual-based Predictiveness Curve: A Visual Tool to Assess the
+  Performance of Prediction Models}.
+\newblock {\em Biometrics}, 72(2):392--401.
+\newblock {\em \url{https://doi.org/10.1111/biom.12455}\/}.
+}
+\newcommand{\citationf}{
+Casalicchio, G., Molnar, C., and Bischl, B. (2018).
+\newblock {Visualizing the Feature Importance for Black Box Models}.
+\newblock {\em arXiv preprint arXiv:1804.06620}.
+\newblock {\em \url{https://arxiv.org/abs/1804.06620}\/}.
+\newblock To Appear in: {\em Machine Learning and Knowledge Discovery in Databases: European Conference, ECML PKDD 2018}.
+}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Frontmatter
+\Title
+{On Benchmark Experiments and Visualization Methods for the Evaluation and Interpretation of Machine Learning Models}                  % 1  title
+{Giuseppe Casalicchio}                    % 2  your name
+{Mathematik, Informatik und Statistik}    % 3  faculty
+{\deadline}                               % 4  date of submission
+{Prof. Dr. Bernd Bischl}                  % 5  1st referee
+{Prof. Dr. Friedrich Leisch}              % 6  2nd referee
+{PD Dr. Fabian Scheipl}                   % 7  3nd referee
+{18.03.2019}                                % 8  date of defense (not relevant/known yet)
+
+%\pagenumbering{Roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acknowledgments
+<<child="0-acknowledgment.Rnw", eval = !remove.contributions>>=
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Summary
+
+<<child="0-summary-de.Rnw", eval = !remove.contributions>>=
+@
+
+<<child="0-summary-en.Rnw">>=
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents
+%\pagenumbering{roman}
+%\pagestyle{empty}
+%\pagenumbering{gobble}
+{\small \tableofcontents}
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Body
+\pagenumbering{arabic}
+\mainmatter\setcounter{page}{1}
+%\part{Introduction and Background}
+<<child="01-intro-motivation.Rnw">>=
+@
+
+<<child="02-background.Rnw">>=
+@
+
+<<child="03-attached-contributions-parts.Rnw", eval = TRUE>>=
+@
+
+<<child="04-conclusion.Rnw">>=
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References
+\renewcommand\bibname{\protect Contributing Publications}
+\begin{thebibliography}{}
+\bibitem[Probst et~al., 2017]{contribution2}
+\citationb
+
+\bibitem[Casalicchio et~al., 2017]{contribution3}
+\citationc
+
+\bibitem[Bischl et~al., 2017]{contribution4}
+\citationd
+
+\bibitem[Casalicchio et~al., 2016]{contribution5}
+\citatione
+
+\bibitem[Casalicchio et~al., 2018]{contribution6}
+\citationf
+\end{thebibliography}
+
+\renewcommand\bibname{\protect Further References}
+\bibliography{bib}
+
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\iffalse")
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Eidesstattliche Versicherung
+\chapter*{Eidesstattliche Versicherung}
+\thispagestyle{empty}
+\vspace{-1cm}
+(Siehe Promotionsordnung vom 12. Juli 2011, § 8 Abs. 2 Pkt. 5)
+
+\vspace{2cm} Hiermit erkläre ich an Eides statt, dass die Dissertation von mir selbstständig, \\
+ohne unerlaubte Beihilfe angefertigt ist.
+
+\vspace{3cm}
+\hfill\rule{6cm}{0.4pt}\\
+\noindent München, den \deadline \hfill Giuseppe Casalicchio
+\cleardoublepage
+<<results='asis', echo=FALSE, eval=remove.contributions>>=
+cat("\\fi")
+@
+\end{document}

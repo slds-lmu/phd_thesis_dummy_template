@@ -1,0 +1,9 @@
+\Sexpr{set_parent('Casalicchio_Giuseppe.Rnw')}
+
+\part{Conclusion}
+\label{part:conclusion}
+
+% Concluding Remarks
+\chapter{Concluding Remarks and Future Work}
+
+Final blabla
