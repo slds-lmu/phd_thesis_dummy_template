@@ -1,6 +1,4 @@
 \documentclass[bibliography=totoc,11pt,BCOR=12mm,DIV=14,twoside,parskip=half,paper=A4,pagesize=auto]{scrbook} % hidelinks
-% Testdruck Seiten: 28,35,44,54,68,76,83,113-116
-% Testdruck Acrobat Reader: 16,23,32,42,56,64,71,101,102,103,104
 %\let\mathds\mathbb
 
 <<echo = FALSE, results='hide'>>=
@@ -13,6 +11,8 @@ remove.contributions = FALSE
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Deckblatt + Titelseite
+
+% The content to be shown in the PDF can be specified below after begin{document}
 \newcommand{\Title}[9]{
   % outer title
   \frontmatter %\AddToShipoutPicture*{\Front}
@@ -42,12 +42,6 @@ remove.contributions = FALSE
     der Ludwig-Maximilians-Universit\"at M\"unchen
     \\ [11.5mm]
     Eingereicht am #4
-    % alternativ (berichterstatter auf vorderseite)
-    %\\ [5mm]
-    %Eingereicht am #4 \\ [5mm]
-    %Erster Berichterstatter:  #5 \\
-    %Zweiter Berichterstatter: #6 \\ [5mm]
-    %Tag der Disputation: #7
 
   \end{flushleft}
 
@@ -69,13 +63,15 @@ remove.contributions = FALSE
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Contributions
-%\newcommand{\conta}{Chapter \ref{chap:cont1}\xspace}%: \textsf{mlr}: Machine learning in \textsf{R}}
+
+% shortcut that can be used to refer to your publications
 \newcommand{\contb}{Chapter \ref{chap:cont2}\xspace}%: Multilabel Classification with \textsf{R} Package \textsf{mlr}}
 \newcommand{\contc}{Chapter \ref{chap:cont3}\xspace}%: \textsf{OpenML}: An \textsf{R} package to connect to the machine learning platform}
 \newcommand{\contd}{Chapter \ref{chap:cont4}\xspace}%: OpenML Benchmarking Suites and the OpenML100}
 \newcommand{\conte}{Chapter \ref{chap:cont5}\xspace}%: The Residual-Based Predictiveness Curve}
 \newcommand{\contf}{Chapter \ref{chap:cont6}\xspace}%: Visualizing the Feature Importance for Black Box Models}
 
+% shortcut that is shown before the publication is embedded in the '03-attached-contributions-parts.Rnw'
 \newcommand{\citationb}{
 Probst, P., Au, Q., Casalicchio, G., Stachl, C., and Bischl, B. (2017).
 \newblock {Multilabel Classification with R Package mlr}.
@@ -116,14 +112,14 @@ Casalicchio, G., Molnar, C., and Bischl, B. (2018).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Frontmatter
 \Title
-{On Benchmark Experiments and Visualization Methods for the Evaluation and Interpretation of Machine Learning Models}                  % 1  title
+{On Benchmark Experiments and Visualization Methods for the Evaluation and Interpretation of Machine Learning Models}% 1  title
 {Giuseppe Casalicchio}                    % 2  your name
 {Mathematik, Informatik und Statistik}    % 3  faculty
 {\deadline}                               % 4  date of submission
 {Prof. Dr. Bernd Bischl}                  % 5  1st referee
 {Prof. Dr. Friedrich Leisch}              % 6  2nd referee
 {PD Dr. Fabian Scheipl}                   % 7  3nd referee
-{18.03.2019}                                % 8  date of defense (not relevant/known yet)
+{18.03.2019}                              % 8  date of defense (not relevant/known yet)
 
 %\pagenumbering{Roman}
 
@@ -134,7 +130,6 @@ Casalicchio, G., Molnar, C., and Bischl, B. (2018).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Summary
-
 <<child="0-summary-de.Rnw", eval = !remove.contributions>>=
 @
 
@@ -168,6 +163,8 @@ Casalicchio, G., Molnar, C., and Bischl, B. (2018).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % References
+
+% If you want to have your publications on a separate page
 \renewcommand\bibname{\protect Contributing Publications}
 \begin{thebibliography}{}
 \bibitem[Probst et~al., 2017]{contribution2}

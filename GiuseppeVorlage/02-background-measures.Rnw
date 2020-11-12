@@ -52,31 +52,7 @@ $FN$ and $FP$ refer to the positive and negative classes of the ground truth tha
 
 \subsubsection*{Scoring Classifiers}
 
-Scoring classifiers predict scores that usually range from $-\infty$ to $\infty$, i.e., $\fh(\xi[]) \in \mathds{R}$.
-In particular, different scoring classifiers may predict scores that are on a completely different scale.
-Consequently, it is often only the order of the scores that is relevant when comparing different scoring classifiers.
-Therefore, the scale and magnitude of the scores can often be neglected.
-The easiest way to compare and assess the performance of scoring classifiers is to transform them into discrete classifiers (see Figure \ref{fig:classifpred}).
-This allows the use of previously described discrimination measures, which are based on the confusion matrix.
-For this purpose, a threshold $\theta$ is usually used to separate the scores into discrete classes.
-The resulting discrete classifier for a given threshold $\theta$ is then
-\begin{equation}
-\label{eq:scoring}
-\hh(\xi[], \theta) = \begin{cases}
-1 & \text{if } \fh(\xi[]) > \theta \\
-0 & \text{if } \fh(\xi[]) \leq \theta
-\end{cases}.
-\end{equation}
-However, any value within the range of the predicted scores can act as a threshold, and different thresholds might result in an entirely different confusion matrix.
-Therefore, it is not trivial how to assess the performance in such situations and how to select an appropriate threshold beforehand.
-The most common way is to select the threshold value either manually (e.g., a pre-specified threshold value of interest) or based on optimizing specific criteria \citep[cf.][]{fluss2005estimation, perkins2006inconsistency}.
-
-The ROC curve has proven to be useful for assessing the performance of a scoring classifier because it visualizes the resulting $TPR(\theta)$ and $FPR(\theta)$ for each possible threshold $\theta$.
-Thus, it implicitly considers the order of the scores imposed by the scoring classifier \citep[cf.][]{hernandez2012unified}.
-Specifically, the $TPR$ and $FPR$ at a given threshold value $\theta$ are defined respectively as
-$$TPR(\theta) = \P (\fh(X) > \theta | Y=1) \quad\text{and}\quad FPR(\theta) = \P (\fh(X) > \theta | Y=0).$$
-The pairs $(\widehat{FPR}(\theta), \widehat{TPR}(\theta))$ are computed using Equation \eqref{eq:tprfpr} based on different threshold values $\theta$ and by using $\hh(\xi[], \theta)$ from Equation \eqref{eq:scoring}.
-The points can then be visualized in the ROC space, yielding an estimate of the ROC curve when connecting these points.
+Blabla with cool R code that produces nice figure.
 
 <<echo=FALSE, results='hide'>>=
 set.seed(123)
@@ -84,12 +60,6 @@ fun = ecdf(rexp(1000000, rate = 5))
 x = seq(0, 1, length = 1000)
 d = data.frame(x = x, y = fun(x))
 @
-A natural performance measure that can be derived from the ROC curve is the area under the curve ($AUC$), which according to \citet{pencina2008evaluating} can be defined as
-$$AUC = \int_0^1 TPR(\theta) \; \frac{\text{ d}}{\text{ d}\theta} \; FPR(\theta) \text{ d}\theta.$$
-Obviously, the $AUC$ integrates over all possible thresholds $\theta$ across the whole range of scores.
-For illustration purposes, Figure \ref{fig:roc}, panel (b) displays an optimal ROC curve with $AUC = 1$ and a ROC curve with an $AUC = \Sexpr{round(mean(d$y), 2)}$.
-The dashed identity line refers to the ROC curve of a random guessing classifier and is used as the baseline.
-Since the area of the baseline is equal to $0.5$, the estimated $AUC$ of a random guessing classifier will also be close to $0.5$.
 
 <<echo=FALSE, fig.pos="!htb", warning=FALSE, fig.height=3.5, fig.width=8, fig.cap="\\label{fig:roc}Panel (a) displays the best possible discrete classifier in the ROC space and two random guessing classifiers lying on the baseline, namely one that always predicts class 1 and one that never predicts class 1. Panel (b) displays the optimal ROC curve (with $AUC = 1$), a ROC curve with $AUC = 0.8$, and the ROC curve of a random guessing classifier (with $AUC = 0.5$).", fig.pos="ht", fig.align="center", out.width="\\textwidth">>=
 gg_color_hue = function(n) {

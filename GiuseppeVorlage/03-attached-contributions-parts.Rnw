@@ -19,12 +19,7 @@ This article is licensed under a \href{https://creativecommons.org/licenses/by/4
 
 \subsubsection*{Author contributions:}
 
-Philipp Probst and Quay Au prepared a first draft of the paper.
-Giuseppe Casalicchio reworked the paper and improved the mathematical notation.
-He also assisted in designing and running the benchmark study, as well as in analyzing and reporting the benchmark results.
-He further extended the benchmark study to accommodate the reviewers' comments.
-Clemens Stachl and Bernd Bischl added valuable input and suggested several notable modifications.
-All authors contributed to revisions of the paper.
+Explain what you and others did.
 
 \subsubsection*{Supplementary material available at:}
 
@@ -68,12 +63,7 @@ Springer-Verlag GmbH Germany, 2017.
 
 \subsubsection*{Author contributions:}
 
-Giuseppe Casalicchio prepared a first draft of the whole paper.
-Section 1 and 2 were mainly drafted by Joaquin Vanschoren.
-Bernd Bischl, Dominik Kirchhoff and Michel Lang designed and prepared a first draft of the package with some basic functionalities.
-Giuseppe Casalicchio took over the package development and reworked most parts of the package.
-He further continuously extended, tested and adapted the package due to the further ongoing development of the OpenML project.
-All authors added valuable input, proofread and contributed to revisions of the paper.
+Explain what you and others did.
 
 \subsubsection*{Supplementary material available at:}
 
@@ -105,12 +95,7 @@ The chapter also describes how researchers can create their own benchmarking sui
 
 \subsubsection*{Author contributions:}
 
-The paper was jointly written and reworked by all authors.
-All authors contributed to the extensive task of selecting, documenting, and curating appropriate classification datasets from OpenML.
-Jan van Rijn and Joaquin Vanschoren were responsible for extending the REST API, and they also implemented an interface to the OpenML server for creating benchmarking suites.
-Matthias Feurer and Jan van Rijn were responsible for extending and adapting the \textsf{Python} interface.
-Giuseppe Casalicchio was responsible for extending and adapting the \textsf{R} interface.
-All authors added valuable input and proofread the paper in several stages.
+Explain what you and others did.
 
 <<results='asis', echo=FALSE, eval=remove.contributions>>=
 cat("\\iffalse")
@@ -148,11 +133,7 @@ The International Biometric Society, 2015.
 
 \subsubsection*{Author contributions:}
 
-The whole paper was drafted and, in most parts, written by Giuseppe Casalicchio.
-Matthias Schmid revised the paper in several stages and contributed to all sections.
-Bernd Bischl helped with setting up the simulation and designing the accompanying \textsf{R} package.
-Anne-Laure Boulesteix contributed to the real data application in Section 5.
-All authors added valuable input, proofread and revised the paper.
+Explain what you and others did.
 
 \subsubsection*{Supplementary material available at:}
 
@@ -185,18 +166,13 @@ Moreover, another feature importance measure called the Shapley feature importan
 
 \citationf
 
-\subsubsection*{Copyright information:}
-
 \subsubsection*{Author contributions:}
 
-The whole paper and the accompanying \textsf{R} package were written by Giuseppe Casalicchio.
-Christoph Molnar and Bernd Bischl added valuable input and suggested several notable modifications.
-All authors proofread and revised the paper.
+Explain what you and others did.
 
 \subsubsection*{Supplementary material available at:}
 
 \textsf{R} package: \url{https://github.com/giuseppec/featureImportance}
-
 
 <<results='asis', echo=FALSE, eval=remove.contributions>>=
 cat("\\iffalse")

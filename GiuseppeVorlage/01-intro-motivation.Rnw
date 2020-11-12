@@ -4,9 +4,9 @@
 
 \section{Outline}
 % What is the thesis about
-This thesis focuses on the development of tools and methods that facilitate the application, comparison, as well as evaluation and interpretation of supervised machine learning methods.
+This thesis focuses on topics no one will ever read.
 
-% Explain chapter 1
+% Explain chapter 1 (Outline & Motivation)
 The next section gives an overview of all contributing articles and describes their respective goals on a general level.
 Furthermore, the section presents the motivation of the contributing articles, and it establishes a connection between the articles from a general perspective.
 
@@ -26,4 +26,5 @@ The thesis concludes with Part \ref{part:conclusion} by emphasizing possible fut
 
 \section{Motivation and Scope}
 
-Motivate your thesis and describe its scope
+My thesis contains the coolest stuff you will ever read.
+The scope is ...
